@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokyo Mafia</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            background: #1a1a1d;
+            color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .section-title {
+            background-image: linear-gradient(90deg, #e94560 0%, #0f3460 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .section {
+            padding: 6rem 2rem;
+            margin: 0 auto;
+            max-width: 1000px;
+            position: relative;
+        }
+        .cta-button {
+            background-color: #e94560;
+            color: white;
+            padding: 0.75rem 2.5rem;
+            border-radius: 50px;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            box-shadow: 0px 4px 20px rgba(233, 69, 96, 0.5);
+            font-weight: 600;
+        }
+        .cta-button:hover {
+            background-color: #1f2933;
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 30px rgba(31, 41, 51, 0.5);
+        }
+        .card {
+            background: rgba(31, 41, 51, 0.85);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        .card-title {
+            margin-bottom: 1.75rem;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e94560;
+        }
+        .card-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #dcdcdc;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Navigation Bar */
+        nav {
+            backdrop-filter: blur(15px);
+            background: rgba(26, 26, 29, 0.8);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(26, 26, 29, 1);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        nav a {
+            color: #f0f0f0;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #e94560;
+        }
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+            padding: 12rem 2rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            position: relative;
+        }
+        header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #1a1a1d;
+            clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
+        }
+        header h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Footer */
+        footer {
+            background: #1a1a1d;
+            color: #999;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        footer p {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="leading-relaxed tracking-wide">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 left-0 z-50 py-4">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div>
+                    <a href="#" class="text-2xl font-bold">Tokyo Mafia</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#vision" class="hover:text-gray-300">Vision</a>
+                    <a href="#research" class="hover:text-gray-300">Research</a>
+                    <a href="#activities" class="hover:text-gray-300">Activities</a>
+                    <a href="#support" class="hover:text-gray-300">Support</a>
+                    <a href="#members" class="hover:text-gray-300">Members</a>
+                    <a href="#contact" class="hover:text-gray-300">Contact</a>
+                    <a href="#structure" class="hover:text-gray-300">組織形態</a> <!-- New Section Link -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <div class="max-w-4xl mx-auto">
+            <h1 class="fade-in">Tokyo Mafia</h1>
+            <p class="mt-4 fade-in">A Vision for Creating the Next Generation of Great Minds</p>
+            <a href="#vision" class="cta-button mt-8 fade-in">Learn More</a>
+        </div>
+    </header>
+
+    <!-- Vision Section -->
+    <section id="vision" class="section fade-in">
+        <h2 class="text-4xl font-bold section-title mb-8 text-center">Vision</h2>
+        <div class="card">
+            <p class="card-content">
+                このプロジェクトのビジョンは、レオナルド・ダ・ヴィンチ、スティーブ・ジョブス、バスキア、ビル・ゲイツ、イーロン・マスクといった偉大な人物を輩出する集団を形成することです。<br><br>
+                私たちは、創造性に富み、知性に優れた若者たちが出会い、互いに刺激を与え合う「創造性の共鳴」を実現するための環境を構築します。これにより、偉大な人物を生み出す土壌を整えます。<br><br>
+                偉人たちは孤独であることが多いですが、私たちはその孤独を打破し、彼らが互いに遭遇できる空間を作り上げます。
+            </p>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section fade-in">
+        <h2 class="text-4xl font-bold section-title mb-8 text-center">Research</h2>
+        <div class="card">
+            <p class="card-content">
+                現代の社会では、イノベーションが求められていますが、それを実現するための創造性をどのように引き出すかが課題です。私たちは、web3的構造を活用して、創造性の共鳴を引き出すための新しい教育モデルを研究しています。<br><br>
+                <strong>Web3的構造とは</strong>、すべてのメンバーが運営者であり、同時に参加者でもあるという形態を指します。この構造では、各メンバーが積極的に教材を作成し、他のメンバーと知識を共有します。これにより、従来の一方向的な教育モデルとは異なり、相互作用が強化され、創造性が共鳴しやすくなります。<br><br>
+                具体的には、以下の3つの要素がweb3的構造を支えています：
+            </p>
+            <ul class="list-disc list-inside card-content">
+                <li>分散型のリーダーシップ：すべてのメンバーがリーダーシップを発揮し、学びの場をリードします。</li>
+                <li>メタ認知の促進：メンバーは自らの学びを振り返り、他者からのフィードバックを受けながら成長します。</li>
+                <li>透明性と信頼性：すべての活動が透明に記録され、誰もがその成果を確認できます。</li>
+            </ul>
+            <p class="card-content mt-6">
+                これらの要素は、相互に補完し合い、強固な創造的共鳴を生み出します。私たちの研究は、このような構造を用いた新しい教育モデルの有効性を探るものです。
+            </p>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="section fade-in">
+        <h2 class="text-4xl font-bold section-title mb-8 text-center">Activities</h2>
+        <div class="card">
+            <p class="card-content">
+                私たちは、クリエイティビティを向上させるためのディスカッションを行い、その結果を共有することで、クラブの構造をブラッシュアップします。<br><br>
+                全員が運営者であり参加者であるというweb3的な構造のもと、メンバーが創造性を最大限に引き出し、継続的に成長し続けることを目指しています。
+            </p>
+            <div class="mt-6">
+                <a href="activity1.html" class="cta-button">Activity 1</a>
+                <a href="activity2.html" class="cta-button ml-4">Activity 2</a>
+                <a href="activity3.html" class="cta-button ml-4">Activity 3</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="section fade-in">
+        <h2 class="text-4xl font-bold section-title mb-8 text-center">Support</h2>
+        <div class="card">
+            <p class="card-content">
+                私たちは、共に生活し、活動を展開できる場所を求めています。また、いただいた資金は主に家賃として使用し、安心して創造的な活動に集中できる環境を整えるために役立てます。<br><br>
+                支援の形態は以下の3つに分かれます：
+            </p>
+            <ul class="list-disc list-inside card-content">
+                <li><strong>住居の提供:</strong> 東京（渋谷区、新宿区周り）で住むことができる部屋や家を貸してくださる方。</li>
+                <li><strong>定期的な資金援助:</strong> 毎月、私たちの活動を支援してくださる方。</li>
+                <li><strong>単発的な寄付:</strong> 一度きりの寄付を通じて、プロジェクトを支援してくださる方。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Organizational Structure Section -->
+    <section id="structure" class="section fade-in">
+        <h2 class="text-4xl font-bold section-title mb-8 text-center">structure</h2>
+        <div class="card">
+            <p class="card-content">
+                Tokyo Mafia の組織形態は、以下のように構成されています。コミュニティ全体が一体となってプロジェクトを推進し、メンバーは互いに協力し合い、目的達成に向けて努力しています。
+            </p>
+            <div class="mt-6 flex justify-center">
+                <img src="Tokyo_mafia_structure.png" alt="Organizational Structure" class="max-w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Introduction Section -->
+    <section id="members" class="section fade-in">
+        <h2 class="text-4xl font-bold section-title mb-8 text-center">Members</h2>
+        <div class="space-y-8">
+            <div class="card">
+                <h3 class="card-title">米田千</h3>
+                <p class="card-content">
+                    高校三年生（一年前、私が追い求めるものが既存の教育形態では得られないと確信し、退学という道を選んだ）。私の使命は、ラグジュアリーブランドのデザインと哲学の両分野で、世界に新たな指標を打ち立てること。大学進学を前にしたこの一年間で、『超利己主義』『超合理主義』『ユートピアの言論論理学的解説』などなどの10冊の本を制作する予定で、既に『新ニーチェ』という哲学書の執筆をしている。このプロジェクトは、私の思想が次世代に影響を与えるための重要なステップと考えている。私のInstagramでは、ファッションデザインの一端を公開しているが、これは自分の可能性のほんの一部でしかない。Tokyo Mafiaの創設者兼、メンバーとして、世界に名を轟かせるクリエイターとして歴史に名を刻む。
+                </p>
+                <a href="https://www.instagram.com/zeen_8906?igsh=MWlheGo1cnpmcDZ5aw%3D%3D&utm_source=qr" class="cta-button inline-block mt-4">Instagram</a>
+            </div>
+            <div class="card">
+                <h3 class="card-title">岩佐雅也</h3>
+                <p class="card-content">
+                    42Tokyoでエンジニアリングを学びつつ、作曲や小説などのクリエイティブ活動にも取り組む大学一年生（休学中）。ただの住まいではなく、創造力を最大限に発揮できる場を求め、千と共にTokyo Mafiaを創設。このシェアハウスは、次世代のリーダーを育成する空間として設計した。<br><br>
+                    ビジョンは、世界に新たな価値を生み出すこと。その柱は以下の三つ:
+                </p>
+                <ul class="list-disc list-inside mt-4 card-content">
+                    <li>既存の枠組みを超えた表現の探求: 伝統的な形式にとらわれない新たな創作手法の模索。</li>
+                    <li>シンプルで直感的なツールの創造: 無駄な複雑さを排除し、ユーザーが容易に使える技術を通じて、初期のFacebookのような革新的かつシンプルなプロダクトを発明する。</li>
+                    <li>真の多様性と創造性の探求: 偽りの多様性を排除し、純粋な創造活動を促進。</li>
+                </ul>
+                <p class="card-content mt-4">
+                    これからの一年で、Tokyo Mafiaを「偉人集団」として世界に示し、その名を響かせるつもりだ。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section fade-in">
+        <h2 class="text-4xl font-bold section-title mb-8 text-center">Contact</h2>
+        <p class="text-lg text-gray-300 text-center">
+            ご連絡先: <a href="mailto:zenyoneda@icloud.com" class="text-blue-500 hover:underline">zenyoneda@icloud.com</a>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="text-sm">&copy; 2024 Tokyo Mafia. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade-In Effect
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // Sticky Navigation Bar
+        const nav = document.querySelector('nav');
+        const navHeight = nav.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > navHeight) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
